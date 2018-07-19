@@ -27,10 +27,28 @@ function onload(){
 
 
     $('#bodyText').html(output);
+
       $('.editBtn').click(function() {
           let title = $(this).parent().children().first().html();
-          let rating = $(this).parent().children().next().html();
-          
+          let rating = $(this).parent().children().next().next().html();
+
+          let formattedTitle = title.split('');
+
+          formattedTitle = formattedTitle.splice(7);
+
+          formattedTitle = formattedTitle.join('');
+
+          let formattedRating = rating.split('');
+
+          formattedRating = formattedRating.splice(8);
+
+          formattedRating = formattedRating.join('');
+
+          $('#editTitle').val(formattedTitle);
+          $('#editRating').val(formattedRating);
+
+          $('#edit').css('display', 'block');
+
       });
   })
 
@@ -38,11 +56,10 @@ function onload(){
 document.getElementsByTagName('body')[0].onload = onload();
 
 
-$('#formSubmit').click(saveNewMovie);
 
 
 
-$('#editTitle').val("test Value");
+
 
 
 const saveNewMovie = (e) => {
@@ -64,10 +81,30 @@ const saveNewMovie = (e) => {
     }).then(onload);
 };
 
+const editMovie = (e) => {
+    e.preventDefault();
+
+    let movieTitle = $('#editTitle').val();
+    let movieRating = $('#editRating').val();
+    let newMovie = {
+        "title": movieTitle,
+        "rating": movieRating,
+    };
+
+    fetch('/api/movies',{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newMovie)}
+        ).then(res => res.json())
+
+};
 
 
+$('#formSubmit').click(saveNewMovie);
 
-
+$('#editSubmit').click(editMovie);
 
 
 // Original code
