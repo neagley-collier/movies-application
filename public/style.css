@@ -8,3 +8,9 @@ html, body {
     transform: translateY(-100%);
     text-align: center;
 }
+
+
+#edit{
+    margin-top: 5em;
+    display: none;
+}
