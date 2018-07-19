@@ -3,6 +3,7 @@
  */
 import sayHello from './hello';
 sayHello('World');
+import $ from "jquery";
 
 /**
  * require style imports
@@ -10,43 +11,45 @@ sayHello('World');
 const {getMovies} = require('./api.js');
 
 function onload(){
-  document.getElementById('bodyText').innerText = 'Loading...';
+  $('#bodyText').text('Loading...');
   getMovies().then((movies)=> {
 
     let output = '';
 
     movies.forEach(({title, rating, id}) =>{
 
-        output += '<p class="movieStats">Title: ' + title + '</br>';
-        output += 'Rating: ' + rating + '</br>';
-        output += 'ID: ' + id + '</br></br>';
-        output += '<button class = "editBtn">Edit</button></p>'
-        }
-    );
+        output += '<div class="movieStats"><span>Title: ' + title + '</span></br>';
+        output += '<span>Rating: ' + rating + '</span></br>';
+        output += '<span>ID: ' + id + '</br></br></span>';
+        output += '<button class="editBtn" >Edit</button></div>'
 
-    document.getElementById('bodyText').innerHTML = output;
+        });
+
+
+    $('#bodyText').html(output);
+      $('.editBtn').click(function() {
+          let title = $(this).parent().children().first().html();
+          let rating = $(this).parent().children().next().html();
+          
+      });
   })
 
 }
-document.getElementsByTagName('body')[0].onload = onload().then(()=>{
-
-    document.getElementById('formSubmit').addEventListener('click', saveNewMovie);
-
-    document.getElementsByClassName('editBtn').addEventListener('click', function(){
+document.getElementsByTagName('body')[0].onload = onload();
 
 
-        document.getElementById('editTitle').value = "test Value"
+$('#formSubmit').click(saveNewMovie);
 
-    });
 
-});
+
+$('#editTitle').val("test Value");
 
 
 const saveNewMovie = (e) => {
   e.preventDefault();
 
-  let movieTitle = document.getElementById('newTitle').value;
-  let movieRating = document.getElementById('titleRating').value;
+  let movieTitle = $('#newTitle').val();
+  let movieRating = $('#titleRating').val();
   let newMovie = {
       "title": movieTitle,
       "rating": movieRating,
