@@ -3,43 +3,49 @@
 <head>
     <meta charset="UTF-8" />
     <title>My Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
-    <div class="container">
-        <h1>Hello There!</h1>
-        <p id="bodyText">To get started, edit <code>src/index.js</code>.</p>
-        <form id="addMovie">
-             <input type="text" id="newTitle" placeholder="Enter movie title...">
-            <select id="titleRating">
-                <option selected>Select a Rating</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <button id="formSubmit">Submit</button>
-        </form>
-
-
-
-        <form id="edit">
-            <input type="text" id="editTitle" placeholder="Enter movie title...">
-            <select id="editRating">
-                <option selected>Select a Rating</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <button id="editSubmit">Edit</button>
-        </form>
+    <div class="container2 container">
+        <div class="row text-center">
+            <div class="col justify-content-center">
+                <h1>Movie Collection</h1>
+                <hr>
+                <span>
+                    <form class="mx-auto" id="addMovie">
+                        <input type="text" id="newTitle" placeholder="Enter movie title...">
+                        <select id="titleRating">
+                            <option selected>Select a Rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button class="btn btn-primary" id="formSubmit">Submit</button>
+                    </form>
+                    <form class="mx-auto" id="edit">
+                        <input type="text" id="editTitle" placeholder="Enter movie title...">
+                        <select id="editRating">
+                            <option selected>Select a Rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button class="btn btn-primary" id="editSubmit">Save Edits</button>
+                    </form>
+                </span>
+                <div class="row text-center p-3 justify-content-center" id="bodyText">To get started, edit <code>src/index.js</code>.</div>
+            </div>
+        </div>
     </div>
 
 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
     <script src="/main.js"></script>
 
 </body>

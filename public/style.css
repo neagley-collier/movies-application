@@ -1,16 +1,50 @@
 html, body {
     height: 100%;
+    background: linear-gradient(to top, cadetblue, azure);
 }
 
-.container {
+h1 {
+    text-shadow: 1px 1px yellow;
+}
+
+.container2 {
     position: relative;
     top: 50%;
     transform: translateY(-100%);
     text-align: center;
 }
 
+.movieStats {
+    background-color: whitesmoke;
+    max-width: 185px;
+    max-height: 250px;
+}
+
+.editBtn {
+    bottom: 0;
+    position: relative;
+    box-shadow: 1px 1px 1px black;
+    border: 2px solid black;
+    background: linear-gradient(to bottom, lightgrey, aliceblue);
+}
+
+.editBtn:hover {
+    opacity: 0.6;
+}
+
+
+#addMovie {
+    width: 50%;
+    background-color: lightsteelblue;
+    box-shadow: 1px 3px black;
+    border: 2px solid black;
+}
 
 #edit{
-    margin-top: 5em;
+    margin-top: 3em;
     display: none;
+    width: 50%;
+    background-color: floralwhite;
+    box-shadow: 1px 1px 3px black;
+    border: 2px solid black;
 }

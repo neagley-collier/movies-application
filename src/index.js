@@ -10,18 +10,24 @@ import $ from "jquery";
  */
 const {getMovies} = require('./api.js');
 
+
+
+
 function onload(){
-  $('#bodyText').text('Loading...');
+    if (!$('.container').hasClass('container2')) {
+        $('.container').addClass('container2');
+    }
+  $('#bodyText').html('<div class="col display-1">Loading...</div>');
   getMovies().then((movies)=> {
 
     let output = '';
 
     movies.forEach(({title, rating, id}) =>{
 
-        output += '<div class="movieStats"><span>Title: ' + title + '</span></br>';
-        output += '<span>Rating: ' + rating + '</span></br>';
-        output += '<span>ID: ' + id + '</br></br></span>';
-        output += '<button class="editBtn" >Edit</button></div>'
+        output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
+        output += '<p>Rating: ' + rating + '</p>';
+        output += '<p>ID: ' + id + '</p>';
+        output += '<button class="editBtn btn" >Edit</button></div>'
 
         });
 
@@ -50,12 +56,11 @@ function onload(){
           $('#edit').css('display', 'block');
 
       });
-  })
+  });
+    $(".container").removeClass(' container2 ')
 
 }
 document.getElementsByTagName('body')[0].onload = onload();
-
-
 
 
 
@@ -78,7 +83,8 @@ const saveNewMovie = (e) => {
          'Content-Type': 'application/json',
      },
      body: JSON.stringify(newMovie)
-    }).then(onload);
+    }).then(getMovies)
+     .then(onload);
 };
 
 const editMovie = (e) => {
@@ -90,14 +96,14 @@ const editMovie = (e) => {
         "title": movieTitle,
         "rating": movieRating,
     };
-
-    fetch('/api/movies',{
+    $('#edit').css('display', 'none');
+    return fetch('./api/movies', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(newMovie)}
-        ).then(res => res.json())
+        )
 
 };
 
