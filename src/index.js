@@ -17,7 +17,7 @@ function render(){
     if (!$('.container').hasClass('container2')) {
         $('.container').addClass('container2');
     }
-  $('#bodyText').html('<div class="col display-1">Loading...</div>');
+  $('#bodyText').html('<div class="col display-1"><img src="loader.gif">\n</div>');
   getMovies().then((movies)=> {
 
     let output = '';
