@@ -13,7 +13,7 @@ const {getMovies} = require('./api.js');
 
 
 
-function onload(){
+function render(){
     if (!$('.container').hasClass('container2')) {
         $('.container').addClass('container2');
     }
@@ -27,9 +27,11 @@ function onload(){
         output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
         output += '<p>Rating: ' + rating + '</p>';
         output += '<p>ID: ' + id + '</p>';
-        output += '<button class="editBtn btn" >Edit</button></div>'
+        output += '<button class="editBtn btn" >Edit</button></br>';
+        output += '<button class="deleteBtn btn" >Delete</button></div>'
 
-        });
+
+    });
 
 
     $('#bodyText').html(output);
@@ -50,12 +52,24 @@ function onload(){
 
           $('#edit').css('display', 'block');
 
+
+      });
+
+      $('.deleteBtn').click(function () {
+
+          let movieId = $(this).parent().children().next().next().html().slice(4);
+
+          return fetch(`./api/movies/${movieId}`, {
+              method: 'DELETE',}
+          ).then(getMovies)
+              .then(render);
+
       });
   });
     $(".container").removeClass(' container2 ')
 
 }
-document.getElementsByTagName('body')[0].onload = onload();
+document.getElementsByTagName('body')[0].onload = render();
 
 
 
@@ -79,7 +93,7 @@ const saveNewMovie = (e) => {
      },
      body: JSON.stringify(newMovie)
     }).then(getMovies)
-     .then(onload);
+     .then(render);
 };
 
 const editMovie = (e) => {
@@ -100,7 +114,7 @@ const editMovie = (e) => {
         },
         body: JSON.stringify(newMovie)}
         ).then(getMovies)
-        .then(onload);
+        .then(render);
 
 };
 
