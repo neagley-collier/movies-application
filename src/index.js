@@ -36,22 +36,17 @@ function onload(){
 
       $('.editBtn').click(function() {
           let title = $(this).parent().children().first().html();
-          let rating = $(this).parent().children().next().next().html();
+          let rating = $(this).parent().children().next().html();
+          let movieId = $(this).parent().children().next().next().html();
 
-          let formattedTitle = title.split('');
-
-          formattedTitle = formattedTitle.splice(7);
-
-          formattedTitle = formattedTitle.join('');
-
-          let formattedRating = rating.split('');
-
-          formattedRating = formattedRating.splice(8);
-
-          formattedRating = formattedRating.join('');
+         let formattedTitle = title.slice(7);
+         let formattedRating = rating.slice(8);
+         let formattedId = movieId.slice(4);
+         console.log(formattedId);
 
           $('#editTitle').val(formattedTitle);
           $('#editRating').val(formattedRating);
+          $('#editId').val(formattedId);
 
           $('#edit').css('display', 'block');
 
@@ -92,18 +87,20 @@ const editMovie = (e) => {
 
     let movieTitle = $('#editTitle').val();
     let movieRating = $('#editRating').val();
+    let movieId = $('#editId').val();
     let newMovie = {
         "title": movieTitle,
         "rating": movieRating,
     };
     $('#edit').css('display', 'none');
-    return fetch('./api/movies', {
+    return fetch(`./api/movies/${movieId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(newMovie)}
-        )
+        ).then(getMovies)
+        .then(onload);
 
 };
 
