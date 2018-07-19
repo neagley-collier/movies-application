@@ -15,16 +15,31 @@ function onload(){
 
     let output = '';
 
-    movies.forEach(({title, rating, id}) =>
+    movies.forEach(({title, rating, id}) =>{
 
-        output += title
+        output += '<p class="movieStats">Title: ' + title + '</br>';
+        output += 'Rating: ' + rating + '</br>';
+        output += 'ID: ' + id + '</br></br>';
+        output += '<button class = "editBtn">Edit</button></p>'
+        }
     );
 
-    document.getElementById('bodyText').innerText = output;
+    document.getElementById('bodyText').innerHTML = output;
   })
 
-};
-document.getElementsByTagName('body')[0].onload = onload();
+}
+document.getElementsByTagName('body')[0].onload = onload().then(()=>{
+
+    document.getElementById('formSubmit').addEventListener('click', saveNewMovie);
+
+    document.getElementsByClassName('editBtn').addEventListener('click', function(){
+
+
+        document.getElementById('editTitle').value = "test Value"
+
+    });
+
+});
 
 
 const saveNewMovie = (e) => {
@@ -37,17 +52,20 @@ const saveNewMovie = (e) => {
       "rating": movieRating,
   };
 
- return fetch('/api/movies', {
+ fetch('/api/movies', {
     method: 'POST',
+     headers: {
+         'Content-Type': 'application/json',
+     },
      body: JSON.stringify(newMovie)
-    })
+    }).then(onload);
 };
 
 
 
 
 
-document.getElementById('formSubmit').addEventListener('click', saveNewMovie);
+
 
 // Original code
 
@@ -57,6 +75,6 @@ getMovies().then((movies) => {
     console.log(`id#${id} - ${title} - rating: ${rating}`);
   });
 }).catch((error) => {
-  alert('Oh no! Something went wrong.\nCheck the console for details.')
+  alert('Oh no! Something went wrong.\nCheck the console for details.');
   console.log(error);
 });
