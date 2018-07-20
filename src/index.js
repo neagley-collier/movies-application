@@ -63,10 +63,10 @@ function render(){
   getMovies().then((movies)=> {
     let output = '';
     movies.forEach(({title, rating, id, genre, image}) =>{
-        output += '<div class="movieStats col-sm-3 border border-dark p-0"><p>Title: ' + title + '</p>';
-        output += '<p>Rating: ' + rating + '</p>';
-        output += '<p>Genre: ' + genre + '</p>';
-        output += '<p>ID: ' + id + '</p>';
+        output += '<div class="movieStats col-sm-12 col-md-3 border border-dark p-0"><marquee class="m-0">Title: ' + title + '</marquee>';
+        output += '<p class="m-0">Rating: ' + rating + '</p>';
+        output += '<p class="m-0">Genre: ' + genre + '</p>';
+        output += '<p class="m-0">ID: ' + id + '</p>';
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
         output += '<button class="deleteBtn btn"><img src="delete.png"></button><br>';
         output += `<img class="poster" src="${image}"></div>`;
@@ -204,14 +204,14 @@ $('#sortBy').change(function () {
 
         let output = '';
 
-        movies.forEach(({title, rating, id, genre}) =>{
-
-            output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
-            output += '<p>Rating: ' + rating + '</p>';
-            output += '<p>ID: ' + id + '</p>';
-            output += '<p>Genre: ' + genre + '</p>';
+        movies.forEach(({title, rating, id, genre, image}) =>{
+            output += '<div class="movieStats col-sm-12 col-md-3 border border-dark p-0"><p class="m-0">Title: ' + title + '</p>';
+            output += '<p class="m-0">Rating: ' + rating + '</p>';
+            output += '<p class="m-0">Genre: ' + genre + '</p>';
+            output += '<p class="m-0">ID: ' + id + '</p>';
             output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
-            output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>';
+            output += '<button class="deleteBtn btn"><img src="delete.png"></button><br>';
+            output += `<img class="poster" src="${image}"></div>`;
 
             $('#bodyText').html(output);
 
