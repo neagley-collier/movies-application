@@ -120,6 +120,13 @@ $('#formSubmit').click(saveNewMovie);
 
 $('#editSubmit').click(editMovie);
 
+$('#sortBy').change(function () {
+    getMovies().then((movies) => {
+        
+        }
+    )
+});
+
 
 // Original code
 

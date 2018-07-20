@@ -1,9 +1,14 @@
 {
   "movies": [
     {
-      "title": "Star Wars: A New Hope",
-      "rating": "2",
+      "title": "Star Doors: The final frontier",
+      "rating": "3",
       "id": 1
+    },
+    {
+      "title": "Apple",
+      "rating": "1",
+      "id": 2
     }
   ]
 }
