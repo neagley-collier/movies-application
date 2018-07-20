@@ -21,11 +21,12 @@ function render(){
   $('#bodyText').html('<div class="col display-1"><img src="loader.gif">\n</div>');
   getMovies().then((movies)=> {
     let output = '';
-    movies.forEach(({title, rating, id, genre}) =>{
+    movies.forEach(({title, rating, id, genre, image}) =>{
         output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
         output += '<p>Rating: ' + rating + '</p>';
         output += '<p>Genre: ' + genre + '</p>';
         output += '<p>ID: ' + id + '</p>';
+        output += `<img class="poster" src="${image}">`;
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
         output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>';
 

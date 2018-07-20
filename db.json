@@ -4,25 +4,36 @@
       "title": "The Great Gatsby",
       "rating": "4",
       "genre": "Horror",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
       "id": 1
     },
     {
       "title": "The Incredibles",
       "rating": "5",
       "genre": "Choose a Genre",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
       "id": 3
     },
     {
       "title": "Sherlock: Gnomes",
       "rating": "1",
       "genre": "Mystery",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
       "id": 4
     },
     {
       "title": "The Avengers",
       "rating": "5",
       "genre": "Action",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
       "id": 5
+    },
+    {
+      "title": "Indiana Jones",
+      "rating": "5",
+      "genre": "Action",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
+      "id": 6
     }
   ]
 }
