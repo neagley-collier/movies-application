@@ -122,7 +122,64 @@ $('#editSubmit').click(editMovie);
 
 $('#sortBy').change(function () {
     getMovies().then((movies) => {
-        
+
+
+        movies.sort(function (a, b) {
+
+            let c = $('#sortBy').val();
+
+            if (c === 'title') {
+
+                let nameA = a.title.toUpperCase();
+                let nameB = b.title.toUpperCase();
+
+                if (nameA < nameB) {
+                    return -1;
+                } else if (nameA > nameB) {
+                    return 1;
+                } else return 0;
+            }else if (c === 'rating') {
+
+                let nameA = a.rating.toUpperCase();
+                let nameB = b.rating.toUpperCase();
+
+                if (nameA < nameB) {
+                    return -1;
+                } else if (nameA > nameB) {
+                    return 1;
+                } else return 0;
+            }
+            // else if (c === 'genre'){
+            //
+            //     let nameA = a.genre.toUpperCase();
+            //     let nameB = b.genre.toUpperCase();
+            //
+            //     if (nameA < nameB) {
+            //         return -1;
+            //     } else if (nameA > nameB) {
+            //         return 1;
+            //     } else return 0;
+            // }
+        });
+
+        let output = '';
+
+        movies.forEach(({title, rating, id}) =>{
+
+            output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
+            output += '<p>Rating: ' + rating + '</p>';
+            output += '<p>ID: ' + id + '</p>';
+            output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
+            output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>';
+
+            $('#bodyText').html(output);
+
+        });
+
+
+
+
+
         }
     )
 });
