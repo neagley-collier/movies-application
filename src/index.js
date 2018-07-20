@@ -10,9 +10,8 @@
  */
 const {getMovies} = require('./api.js');
 
-const omdbAPICallFront = 'http://www.omdbapi.com/?t=';
-const omdbAPICallBack = '&apikey=d18aa323';
-
+const APIFront = 'http://www.omdbapi.com/?t=';
+const APIBack = '&apikey=d18aa323';
 
 
 function render(){
@@ -28,16 +27,19 @@ function render(){
         output += '<p>Genre: ' + genre + '</p>';
         output += '<p>ID: ' + id + '</p>';
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
-        output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>'
+        output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>';
+
+            $.ajax(APIFront + title + APIBack).done((data) =>{
+                console.log(data);
+
+                $('#bodyText').append('<img class="poster" src = "' + data.Poster + '">')
+
+            });
+
     });
 
     $('#bodyText').html(output);
-      $.ajax(omdbAPICallFront + 'Indiana Jones' + omdbAPICallBack).done((data) =>{
-          console.log(data);
-          console.log(`<img src="${data.Poster}">`);
-          $('.movieStats').css("background-image", "url(" +data.Poster +")").css("background-color", "rgba(0,0,0,0.5)")
-          // $('div').html(`<img src="${data.Poster}">`)
-      });
+
 
       $('.editBtn').click(function() {
           let title = $(this).parent().children().first().html();
