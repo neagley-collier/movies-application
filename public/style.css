@@ -18,18 +18,19 @@ h1 {
     background-color: whitesmoke;
     max-width: 185px;
     max-height: 250px;
+    box-shadow: 1px 1px black;
 }
 
 .editBtn {
-    bottom: 0;
-    position: relative;
-    box-shadow: 1px 1px 1px black;
-    border: 2px solid black;
-    background: linear-gradient(to bottom, lightgrey, aliceblue);
+
 }
 
 .editBtn:hover {
     opacity: 0.6;
+}
+
+.deleteBtn {
+    background: transparent;
 }
 
 

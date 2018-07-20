@@ -27,8 +27,8 @@ function render(){
         output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
         output += '<p>Rating: ' + rating + '</p>';
         output += '<p>ID: ' + id + '</p>';
-        output += '<button class="editBtn btn" >Edit</button></br>';
-        output += '<button class="deleteBtn btn" >Delete</button></div>'
+        output += '<span><button class="editBtn text-hide"><img src="edit.png"></button>';
+        output += '<button class="deleteBtn btn"><img src="delete.png"></button></span></div>'
 
 
     });
@@ -56,8 +56,9 @@ function render(){
       });
 
       $('.deleteBtn').click(function () {
-
           let movieId = $(this).parent().children().next().next().html().slice(4);
+          $(this).parent().fadeOut("slow");
+          $('#edit').css('display', 'none');
 
           return fetch(`./api/movies/${movieId}`, {
               method: 'DELETE',}
