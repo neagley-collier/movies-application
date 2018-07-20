@@ -43,7 +43,7 @@ h1 {
 
 #edit{
     margin-top: 3em;
-    display: none;
+    /*display: none;*/
     width: 50%;
     background-color: floralwhite;
     box-shadow: 1px 1px 3px black;
