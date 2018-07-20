@@ -14,6 +14,46 @@ const APIFront = 'http://www.omdbapi.com/?t=';
 const APIBack = '&apikey=d18aa323';
 
 
+getMovies().then((movies)=>{
+
+
+    movies.forEach((movies)=>{
+
+        let title = movies.title;
+        let id = movies.id;
+        let rating = movies.rating;
+        let genre = movies.genre;
+
+        $.ajax(APIFront + title + APIBack).done((data) =>{
+
+            let updatedMovie = {
+
+                "image": data.Poster,
+                "id": id,
+                "rating": rating,
+                "genre": genre,
+                "title": title
+            };
+
+            fetch(`./api/movies/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedMovie)}
+            ).then(getMovies)
+                .then(render);
+
+    });
+
+
+    })
+
+    }
+);
+
+
+
 function render(){
     if (!$('.container').hasClass('container2')) {
         $('.container').addClass('container2');
@@ -30,12 +70,7 @@ function render(){
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
         output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>';
 
-            $.ajax(APIFront + title + APIBack).done((data) =>{
-                console.log(data);
 
-                $('#bodyText').append('<img class="poster" src = "' + data.Poster + '">')
-
-            });
 
     });
 
@@ -75,10 +110,17 @@ const saveNewMovie = (e) => {
     let movieTitle = $('#newTitle').val();
   let movieRating = $('#titleRating').val();
   let movieGenre = $('#addGenre').val();
+
+  // let posterURL = $.ajax(APIFront + movieTitle + APIBack).done((data) =>{
+  //     console.log(data, data.Poster);
+  //     return(data.Poster);
+  // });
+
     let newMovie = {
       "title": movieTitle,
       "rating": movieRating,
-        "genre": movieGenre
+        "genre": movieGenre,
+        // "image": posterURL
   };
 
  fetch('/api/movies', {

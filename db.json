@@ -1,39 +1,39 @@
 {
   "movies": [
     {
-      "title": "The Great Gatsby",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTY5OTU0OTc2NV5BMl5BanBnXkFtZTcwMzU4MDcyMQ@@._V1_SX300.jpg",
+      "id": 1,
+      "rating": "5",
+      "genre": "Animated",
+      "title": "The Incredibles"
+    },
+    {
+      "image": "https://m.media-amazon.com/images/M/MV5BYzE5MjY1ZDgtMTkyNC00MTMyLThhMjAtZGI5OTE1NzFlZGJjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+      "id": 2,
       "rating": "4",
-      "genre": "Horror",
-      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
-      "id": 1
+      "genre": "Comedy",
+      "title": "Deadpool"
     },
     {
-      "title": "The Incredibles",
-      "rating": "5",
-      "genre": "Choose a Genre",
-      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
-      "id": 3
+      "image": "https://m.media-amazon.com/images/M/MV5BMTc3NjI2MjU0Nl5BMl5BanBnXkFtZTgwNDk3ODYxMTE@._V1_SX300.jpg",
+      "id": 3,
+      "rating": "3",
+      "genre": "Action",
+      "title": "Mission Impossible"
     },
     {
-      "title": "Sherlock: Gnomes",
+      "image": "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg",
+      "id": 4,
+      "rating": "2",
+      "genre": "Thriller",
+      "title": "Casablanca"
+    },
+    {
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
+      "id": 5,
       "rating": "1",
-      "genre": "Mystery",
-      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
-      "id": 4
-    },
-    {
-      "title": "The Avengers",
-      "rating": "5",
-      "genre": "Action",
-      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
-      "id": 5
-    },
-    {
-      "title": "Indiana Jones",
-      "rating": "5",
-      "genre": "Action",
-      "image": "https://m.media-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_SX300.jpg",
-      "id": 6
+      "genre": "Horror",
+      "title": "The Great Gatsby"
     }
   ]
 }
