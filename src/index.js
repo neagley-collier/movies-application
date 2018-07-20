@@ -1,17 +1,25 @@
 /**
  * es6 modules and imports
  */
-import sayHello from './hello';
-sayHello('World');
-import $ from "jquery";
+// import sayHello from './hello';
+// sayHello('World');
+ import $ from "jquery";
 
 /**
  * require style imports
  */
 const {getMovies} = require('./api.js');
 
+function titleCase(input) {
 
+    input = input.toLowerCase();
+    let strArr = input.split(' ');
 
+    for (let i = 0; i < strArr.length; i++) {
+        strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].slice(1);
+    }
+    return strArr.join(' ');
+}
 
 function render(){
     if (!$('.container').hasClass('container2')) {
@@ -19,20 +27,15 @@ function render(){
     }
   $('#bodyText').html('<div class="col display-1"><img src="loader.gif">\n</div>');
   getMovies().then((movies)=> {
-
     let output = '';
-
-    movies.forEach(({title, rating, id}) =>{
-
+    movies.forEach(({title, rating, id, genre}) =>{
         output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
         output += '<p>Rating: ' + rating + '</p>';
         output += '<p>ID: ' + id + '</p>';
+        output += '<p>Genre: ' + genre + '</p>';
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
         output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>'
-
-
     });
-
 
     $('#bodyText').html(output);
 
@@ -60,27 +63,21 @@ function render(){
               method: 'DELETE',}
           ).then(getMovies)
               .then(render);
-
       });
   });
     $(".container").removeClass(' container2 ')
-
 }
 document.getElementsByTagName('body')[0].onload = render();
 
-
-
-
-
-
 const saveNewMovie = (e) => {
   e.preventDefault();
-
-  let movieTitle = $('#newTitle').val();
+    let movieTitle = $('#newTitle').val();
   let movieRating = $('#titleRating').val();
-  let newMovie = {
+  let movieGenre = $('#addGenre').val();
+    let newMovie = {
       "title": movieTitle,
       "rating": movieRating,
+        "genre": movieGenre
   };
 
  fetch('/api/movies', {
@@ -95,15 +92,15 @@ const saveNewMovie = (e) => {
 
 const editMovie = (e) => {
     e.preventDefault();
-
     let movieTitle = $('#editTitle').val();
     let movieRating = $('#editRating').val();
     let movieId = $('#editId').val();
+    let movieGenre = $('#editGenre').val();
     let newMovie = {
         "title": movieTitle,
         "rating": movieRating,
+        "genre": movieGenre
     };
-    $('#edit').css('display', 'none');
     return fetch(`./api/movies/${movieId}`, {
         method: 'PUT',
         headers: {
@@ -112,7 +109,6 @@ const editMovie = (e) => {
         body: JSON.stringify(newMovie)}
         ).then(getMovies)
         .then(render);
-
 };
 
 
@@ -144,42 +140,38 @@ $('#sortBy').change(function () {
                 let nameB = b.rating.toUpperCase();
 
                 if (nameA < nameB) {
+                    return 1;
+                } else if (nameA > nameB) {
+                    return -1;
+                } else return 0;
+            }
+            else if (c === 'genre'){
+
+                let nameA = a.genre.toUpperCase();
+                let nameB = b.genre.toUpperCase();
+
+                if (nameA < nameB) {
                     return -1;
                 } else if (nameA > nameB) {
                     return 1;
                 } else return 0;
             }
-            // else if (c === 'genre'){
-            //
-            //     let nameA = a.genre.toUpperCase();
-            //     let nameB = b.genre.toUpperCase();
-            //
-            //     if (nameA < nameB) {
-            //         return -1;
-            //     } else if (nameA > nameB) {
-            //         return 1;
-            //     } else return 0;
-            // }
         });
 
         let output = '';
 
-        movies.forEach(({title, rating, id}) =>{
+        movies.forEach(({title, rating, id, genre}) =>{
 
             output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
             output += '<p>Rating: ' + rating + '</p>';
             output += '<p>ID: ' + id + '</p>';
+            output += '<p>Genre: ' + genre + '</p>';
             output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
             output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>';
 
             $('#bodyText').html(output);
 
         });
-
-
-
-
-
         }
     )
 });
@@ -187,12 +179,4 @@ $('#sortBy').change(function () {
 
 // Original code
 
-getMovies().then((movies) => {
-  console.log('Here are all the movies:');
-  movies.forEach(({title, rating, id}) => {
-    console.log(`id#${id} - ${title} - rating: ${rating}`);
-  });
-}).catch((error) => {
-  alert('Oh no! Something went wrong.\nCheck the console for details.');
-  console.log(error);
-});
+

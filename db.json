@@ -3,22 +3,44 @@
     {
       "title": "Star Doors: The final frontier",
       "rating": "3",
+      "genre": "Action",
       "id": 1
     },
     {
       "title": "Apple",
-      "rating": "1",
+      "rating": "2",
+      "genre": "Strategy",
       "id": 2
     },
     {
-      "title": "Test Movie",
-      "rating": "5",
-      "id": 3
+      "title": "Random",
+      "rating": "4",
+      "genre": "Adventure",
+      "id": 5
     },
     {
-      "title": "ZXY",
-      "rating": "1",
-      "id": 4
+      "title": "Star Doors: The final frontier",
+      "rating": "3",
+      "genre": "MOBA",
+      "id": 7
+    },
+    {
+      "title": "Chrono Trigger",
+      "rating": "5",
+      "genre": "Adventure",
+      "id": 8
+    },
+    {
+      "title": "Great Game",
+      "rating": "4",
+      "genre": "rpg",
+      "id": 9
+    },
+    {
+      "title": "This is A Movie",
+      "rating": "2",
+      "genre": "MOBA",
+      "id": 10
     }
   ]
 }

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/style.css" />
 </head>
-</body>
 <body>
 
     <div class="container2 container">
@@ -32,6 +31,8 @@
                             </div>
                             <div class="modal-body">
 
+                                <!--  Add Button Form  -->
+
                                 <form class="mx-auto" id="addMovie">
                                     <input type="text" id="newTitle" placeholder="Enter movie title...">
                                     <select id="titleRating">
@@ -42,8 +43,21 @@
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                     </select>
+                                    <select id="addGenre">
+                                        <option selected>Choose a Genre</option>
+                                        <option value="Action">Action</option>
+                                        <option value="RPG">RPG</option>
+                                        <option value="Adventure">Adventure</option>
+                                        <option value="MOBA">Moba</option>
+                                        <option value="MMO">MMO</option>
+                                        <option value="Strategy">Strategy</option>
+                                        <option value="Casual">Casual</option>
+                                        <option value="Racing">Racing</option>
+                                    </select>
 
                                 </form>
+
+                                <!-- End Add Button Form  -->
 
                             </div>
                             <div class="modal-footer">
@@ -55,10 +69,13 @@
                 </div>
 
 
+
                 <div class="modal fade" id="editModal" tabindex="-1">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
+
+                                 <!--  Edit Button Form  -->
 
                     <form class="mx-auto" id="edit">
                         <input type="text" id="editTitle" placeholder="Enter movie title...">
@@ -70,9 +87,21 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
+                        <select id="editGenre">
+                            <option selected>Choose a Genre</option>
+                            <option value="Action">Action</option>
+                            <option value="RPG">RPG</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="MOBA">Moba</option>
+                            <option value="MMO">MMO</option>
+                            <option value="Strategy">Strategy</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Racing">Racing</option>
+                        </select>
                         <input type="text" id="editId" readonly>
-
                     </form>
+
+                                <!--  Edit Button Form  -->
 
                             </div>
                             <div class="modal-footer">
@@ -83,6 +112,7 @@
                     </div>
                 </div>
                 <select id="sortBy">
+                    <option selected>Sort by...</option>
                     <option value="title">Title</option>
                     <option value="genre">Genre</option>
                     <option value="rating">Rating</option>
@@ -99,5 +129,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="/main.js"></script>
+</body>
 
 </html>
