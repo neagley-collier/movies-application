@@ -1,46 +1,28 @@
 {
   "movies": [
     {
-      "title": "Star Doors: The final frontier",
-      "rating": "3",
-      "genre": "Action",
+      "title": "The Great Gatsby",
+      "rating": "4",
+      "genre": "Horror",
       "id": 1
     },
     {
-      "title": "Apple",
-      "rating": "2",
-      "genre": "Strategy",
-      "id": 2
-    },
-    {
-      "title": "Random",
-      "rating": "4",
-      "genre": "Adventure",
-      "id": 5
-    },
-    {
-      "title": "Star Doors: The final frontier",
-      "rating": "3",
-      "genre": "MOBA",
-      "id": 7
-    },
-    {
-      "title": "Chrono Trigger",
+      "title": "The Incredibles",
       "rating": "5",
-      "genre": "Adventure",
-      "id": 8
+      "genre": "Animated",
+      "id": 3
     },
     {
-      "title": "Great Game",
-      "rating": "4",
-      "genre": "rpg",
-      "id": 9
+      "title": "Sherlock: Gnomes",
+      "rating": "1",
+      "genre": "Mystery",
+      "id": 4
     },
     {
-      "title": "This is A Movie",
-      "rating": "2",
-      "genre": "MOBA",
-      "id": 10
+      "title": "The Avengers",
+      "rating": "5",
+      "genre": "Action",
+      "id": 5
     }
   ]
 }

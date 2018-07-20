@@ -10,16 +10,13 @@
  */
 const {getMovies} = require('./api.js');
 
-function titleCase(input) {
+const omdbAPICallFront = 'http://www.omdbapi.com/?t=';
+const omdbAPICallBack = '&apikey=d18aa323';
 
-    input = input.toLowerCase();
-    let strArr = input.split(' ');
-
-    for (let i = 0; i < strArr.length; i++) {
-        strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].slice(1);
-    }
-    return strArr.join(' ');
-}
+$.ajax(omdbAPICallFront + 'Indiana Jones' + omdbAPICallBack).done((data) =>{
+    console.log(data);
+    // $('body').html('<img src= ' + data.)
+});
 
 function render(){
     if (!$('.container').hasClass('container2')) {
