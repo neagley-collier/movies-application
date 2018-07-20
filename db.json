@@ -34,6 +34,20 @@
       "rating": "1",
       "genre": "Horror",
       "title": "The Great Gatsby"
+    },
+    {
+      "image": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
+      "id": 6,
+      "rating": "5",
+      "genre": "Fantasy",
+      "title": "Lord of the Rings"
+    },
+    {
+      "image": "https://ia.media-imdb.com/images/M/MV5BMjNkMzc2N2QtNjVlNS00ZTk5LTg0MTgtODY2MDAwNTMwZjBjXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
+      "id": 7,
+      "rating": "4",
+      "genre": "Comedy",
+      "title": "Indiana Jones"
     }
   ]
 }

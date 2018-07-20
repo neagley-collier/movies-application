@@ -14,44 +14,45 @@ const APIFront = 'http://www.omdbapi.com/?t=';
 const APIBack = '&apikey=d18aa323';
 
 
-getMovies().then((movies)=>{
+function renderMovies() {
+    getMovies().then((movies) => {
 
 
-    movies.forEach((movies)=>{
+            movies.forEach((movies) => {
 
-        let title = movies.title;
-        let id = movies.id;
-        let rating = movies.rating;
-        let genre = movies.genre;
+                let title = movies.title;
+                let id = movies.id;
+                let rating = movies.rating;
+                let genre = movies.genre;
 
-        $.ajax(APIFront + title + APIBack).done((data) =>{
+                $.ajax(APIFront + title + APIBack).done((data) => {
+                    let updatedMovie = {
 
-            let updatedMovie = {
+                        "image": data.Poster,
+                        "id": id,
+                        "rating": rating,
+                        "genre": genre,
+                        "title": title
+                    };
 
-                "image": data.Poster,
-                "id": id,
-                "rating": rating,
-                "genre": genre,
-                "title": title
-            };
+                    fetch(`./api/movies/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(updatedMovie)
+                        }
+                    ).then(getMovies)
+                        .then(render);
 
-            fetch(`./api/movies/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedMovie)}
-            ).then(getMovies)
-                .then(render);
-
-    });
+                });
 
 
-    })
+            })
 
-    }
-);
-
+        }
+    );
+}
 
 
 function render(){
@@ -62,13 +63,13 @@ function render(){
   getMovies().then((movies)=> {
     let output = '';
     movies.forEach(({title, rating, id, genre, image}) =>{
-        output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
+        output += '<div class="movieStats col-sm-3 border border-dark p-0"><p>Title: ' + title + '</p>';
         output += '<p>Rating: ' + rating + '</p>';
         output += '<p>Genre: ' + genre + '</p>';
         output += '<p>ID: ' + id + '</p>';
-        output += `<img class="poster" src="${image}">`;
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
-        output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>';
+        output += '<button class="deleteBtn btn"><img src="delete.png"></button><br>';
+        output += `<img class="poster" src="${image}"></div>`;
 
 
 
@@ -129,8 +130,8 @@ const saveNewMovie = (e) => {
          'Content-Type': 'application/json',
      },
      body: JSON.stringify(newMovie)
-    }).then(getMovies)
-     .then(render);
+    })
+     .then(renderMovies);
 };
 
 const editMovie = (e) => {
@@ -150,8 +151,8 @@ const editMovie = (e) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(newMovie)}
-        ).then(getMovies)
-        .then(render);
+        )
+        .then(renderMovies);
 };
 
 

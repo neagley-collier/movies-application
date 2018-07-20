@@ -15,9 +15,8 @@ h1 {
 }
 
 .movieStats {
+    width: 200px;
     background-color: whitesmoke;
-    max-width: 185px;
-    max-height: 250px;
     box-shadow: 1px 1px black;
 }
 
@@ -54,6 +53,5 @@ h1 {
 }
 
 .poster{
-    height: 50px;
-    width: 30px;
+    width: 200px;
 }
