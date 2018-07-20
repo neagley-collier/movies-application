@@ -15,10 +15,12 @@ h1 {
 }
 
 .movieStats {
-    background-color: whitesmoke;
     max-width: 185px;
     max-height: 250px;
     box-shadow: 1px 1px black;
+}
+
+.movieStats:before {
 }
 
 .editBtn {

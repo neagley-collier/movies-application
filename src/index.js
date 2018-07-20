@@ -13,10 +13,7 @@ const {getMovies} = require('./api.js');
 const omdbAPICallFront = 'http://www.omdbapi.com/?t=';
 const omdbAPICallBack = '&apikey=d18aa323';
 
-$.ajax(omdbAPICallFront + 'Indiana Jones' + omdbAPICallBack).done((data) =>{
-    console.log(data);
-    // $('body').html('<img src= ' + data.)
-});
+
 
 function render(){
     if (!$('.container').hasClass('container2')) {
@@ -28,18 +25,24 @@ function render(){
     movies.forEach(({title, rating, id, genre}) =>{
         output += '<div class="movieStats col-sm-3 border border-dark"><p>Title: ' + title + '</p>';
         output += '<p>Rating: ' + rating + '</p>';
-        output += '<p>ID: ' + id + '</p>';
         output += '<p>Genre: ' + genre + '</p>';
+        output += '<p>ID: ' + id + '</p>';
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
         output += '<button class="deleteBtn btn"><img src="delete.png"></button></div>'
     });
 
     $('#bodyText').html(output);
+      $.ajax(omdbAPICallFront + 'Indiana Jones' + omdbAPICallBack).done((data) =>{
+          console.log(data);
+          console.log(`<img src="${data.Poster}">`);
+          $('.movieStats').css("background-image", "url(" +data.Poster +")").css("background-color", "rgba(0,0,0,0.5)")
+          // $('div').html(`<img src="${data.Poster}">`)
+      });
 
       $('.editBtn').click(function() {
           let title = $(this).parent().children().first().html();
           let rating = $(this).parent().children().next().html();
-          let movieId = $(this).parent().children().next().next().html();
+          let movieId = $(this).parent().children().next().next().next().html();
 
          let formattedTitle = title.slice(7);
          let formattedRating = rating.slice(8);
@@ -52,10 +55,8 @@ function render(){
       });
 
       $('.deleteBtn').click(function () {
-          let movieId = $(this).parent().children().next().next().html().slice(4);
+          let movieId = $(this).parent().children().next().next().next().html().slice(4);
           $(this).parent().fadeOut("slow");
-          // $('#edit').css('display', 'none');
-
           return fetch(`./api/movies/${movieId}`, {
               method: 'DELETE',}
           ).then(getMovies)
