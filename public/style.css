@@ -52,6 +52,16 @@ marquee {
 
 }
 
+.plotText {
+    margin-left: 270px;
+}
+
+.miniPoster {
+    float: left;
+    width: 250px;
+    border: 1px solid black;
+}
+
 .editBtn:hover {
     cursor: pointer;
     opacity: 0.6;

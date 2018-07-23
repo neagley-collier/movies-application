@@ -46,10 +46,7 @@ function renderMovies() {
                         .then(render);
 
                 });
-
-
             })
-
         }
     );
 }
@@ -69,12 +66,10 @@ function render(){
         output += '<p class="m-0">ID: ' + id + '</p>';
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
         output += '<button class="deleteBtn btn"><img src="delete.png"></button><br>';
-        output += `<img class="poster" data-toggle="modal" data-target="exampleModalCenter" src="${image}"></div>`;
+        output += `<img class="poster" data-toggle="modal" data-target="#exampleModalCenter" src="${image}"></div>`;
                                     //Can remove the data-toggle as is for the
                                     // modals for information on movies with
                                     // ajax requests.
-
-
     });
 
     $('#bodyText').html(output);
@@ -82,7 +77,6 @@ function render(){
 
       $('.editBtn').click(function() {
           let title = $(this).parent().children().first().html();
-          console.log(title);
           let rating = $(this).parent().children().next().html();
           let movieId = $(this).parent().children().next().next().next().html();
 
@@ -104,10 +98,6 @@ function render(){
           ).then(getMovies)
               .then(render);
 
-
-
-
-
       });
 
 
@@ -121,13 +111,19 @@ function render(){
           console.log(title);
 
           $.ajax(APIFront + title + APIBack).done((data) => {
+              console.log(data);
               output = '';
-              output += '<div>' + title +'</div>';
-                console.log(output);
+              output += '<div><h3>' + title +'</h3>';
+              output += `<img class="miniPoster" src="${data.Poster}">`;
+              output += '<p class="text-left plotText"><strong>Plot:</strong> ' + data.Plot + '</p>';
+              output += '<p><strong>Actors:</strong> '+ data.Actors+'</p>';
+              output += '<p><strong>Runtime:</strong> '+ data.Runtime+'</p>';
+              output += '<p><strong>Released:</strong> '+ data.Released+'</p></div>';
 
-              $('.modal-info').html(output)
 
+              console.log(output);
 
+              $('.modal-info').html(output);
 
           });
 
@@ -236,7 +232,6 @@ $('#sortBy').change(function () {
                 } else return 0;
             }
         });
-
         let output = '';
 
         movies.forEach(({title, rating, id, genre, image}) =>{
@@ -254,11 +249,6 @@ $('#sortBy').change(function () {
         }
     )
 });
-
-
-
-
-
 
 // Original code
 
