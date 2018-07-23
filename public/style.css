@@ -52,13 +52,11 @@ marquee {
 
 }
 
-.plotText {
-    margin-left: 270px;
-}
+
 
 .miniPoster {
     float: left;
-    width: 250px;
+    width: 175px;
     border: 1px solid black;
 }
 
@@ -110,4 +108,15 @@ marquee {
     .addMovieBtn {
         width: 15%;
     }
+
+    .miniPoster {
+        float: left;
+        width: 250px;
+        border: 1px solid black;
+    }
+
+    .plotText {
+        margin-left: 270px;
+    }
+
 }
