@@ -10,12 +10,12 @@
 
     <div class="container2 container">
         <div class="row text-center">
-            <div class="col justify-content-center">
+            <div class="col justify-content-center mainContentBody">
                 <h1>Movie Collection</h1>
                 <hr>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="addMovieBtn" data-toggle="modal" data-target="#exampleModal">
                     Add Movie
                 </button>
 
@@ -24,7 +24,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Add a Movie</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -56,7 +56,7 @@
 
                                 </form>
 
-                                <!-- End Add Button Form  -->
+
 
                             </div>
                             <div class="modal-footer">
@@ -67,6 +67,7 @@
                     </div>
                 </div>
 
+                <!-- End Add Button Form  -->
 
 
                 <div class="modal fade" id="editModal" tabindex="-1">
@@ -74,10 +75,13 @@
                         <div class="modal-content">
                             <div class="modal-body">
 
+
                                  <!--  Edit Button Form  -->
 
                     <form class="mx-auto" id="edit">
+                        <label for="editTitle">Title</label>
                         <input type="text" id="editTitle" placeholder="Enter movie title...">
+                        <label for="editGenre">Rating</label>
                         <select id="editRating">
                             <option selected>Select a Rating</option>
                             <option value="1">1</option>
@@ -86,6 +90,7 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
+                        <label for="editGenre">Genre</label>
                         <select id="editGenre">
                             <option selected>Choose a Genre</option>
                             <option value="Action">Action</option>
@@ -95,12 +100,11 @@
                             <option value="Horror">Horror</option>
                             <option value="Mystery">Mystery</option>
                             <option value="Fantasy">Fantasy</option>
-
                         </select>
                         <input type="text" id="editId" readonly>
                     </form>
 
-                                <!--  Edit Button Form  -->
+                                <!-- End Edit Button Form  -->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -109,6 +113,7 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <select id="sortBy">
                     <option selected>Sort by...</option>
                     <option value="title">Title</option>
@@ -116,6 +121,33 @@
                     <option value="rating">Rating</option>
 
                 </select>
+
+
+
+
+                <!-- Modal for Info about Movies -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Movie Information</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body modal-info">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -->
+
 
                 <div class="row text-center p-3 justify-content-center" id="bodyText" >To get started, edit <code>src/index.js</code>.</div>
             </div>

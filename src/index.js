@@ -69,8 +69,10 @@ function render(){
         output += '<p class="m-0">ID: ' + id + '</p>';
         output += '<button class="editBtn text-hide" data-toggle="modal" data-target="#editModal"><img src="edit.png"></button>';
         output += '<button class="deleteBtn btn"><img src="delete.png"></button><br>';
-        output += `<img class="poster" src="${image}"></div>`;
-
+        output += `<img class="poster" data-toggle="modal" data-target="exampleModalCenter" src="${image}"></div>`;
+                                    //Can remove the data-toggle as is for the
+                                    // modals for information on movies with
+                                    // ajax requests.
 
 
     });
@@ -80,6 +82,7 @@ function render(){
 
       $('.editBtn').click(function() {
           let title = $(this).parent().children().first().html();
+          console.log(title);
           let rating = $(this).parent().children().next().html();
           let movieId = $(this).parent().children().next().next().next().html();
 
@@ -100,7 +103,39 @@ function render(){
               method: 'DELETE',}
           ).then(getMovies)
               .then(render);
+
+
+
+
+
       });
+
+
+
+      //// Attempted to add data poster
+
+      $('.poster').click(function () {
+
+          //      $(this).parent().children().next().css('background-color', 'yellow');
+          let title = $(this).parent().children().first().html().slice(7);
+          console.log(title);
+
+          $.ajax(APIFront + title + APIBack).done((data) => {
+              output = '';
+              output += '<div>' + title +'</div>';
+                console.log(output);
+
+              $('.modal-info').html(output)
+
+
+
+          });
+
+
+          //// End
+
+      });
+
   });
     $(".container").removeClass(' container2 ')
 }
@@ -205,7 +240,7 @@ $('#sortBy').change(function () {
         let output = '';
 
         movies.forEach(({title, rating, id, genre, image}) =>{
-            output += '<div class="movieStats col-sm-12 col-md-3 border border-dark p-0"><p class="m-0">Title: ' + title + '</p>';
+            output += '<div class="movieStats col-sm-12 col-md-3 border border-dark p-0"><marquee class="m-0">Title: ' + title + '</marquee>';
             output += '<p class="m-0">Rating: ' + rating + '</p>';
             output += '<p class="m-0">Genre: ' + genre + '</p>';
             output += '<p class="m-0">ID: ' + id + '</p>';
@@ -219,6 +254,10 @@ $('#sortBy').change(function () {
         }
     )
 });
+
+
+
+
 
 
 // Original code
