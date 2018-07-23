@@ -60,7 +60,7 @@ function render(){
   getMovies().then((movies)=> {
     let output = '';
     movies.forEach(({title, rating, id, genre, image}) =>{
-        output += '<div class="movieStats col-sm-12 col-md-3 border border-dark p-0"><marquee class="m-0">Title: ' + title + '</marquee>';
+        output += '<div class="movieStats col-sm-12 col-md-3 border border-dark p-0"><h2 class="m-0">Title: ' + title + '</h2>';
         output += '<p class="m-0">Rating: ' + rating + '</p>';
         output += '<p class="m-0">Genre: ' + genre + '</p>';
         output += '<p class="m-0">ID: ' + id + '</p>';
